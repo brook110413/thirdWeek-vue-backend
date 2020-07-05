@@ -36,14 +36,14 @@
             <th
               class="text-right sort"
               width="120"
-              @click="sortPrice(),sortOriPrice = !sortOriPrice,sort = 'oriPrice'"
+              @click="sortOriPrice = !sortOriPrice,sort = 'oriPrice',sortPrice()"
             >
               原價 <i class="fas fa-sort"></i>
             </th>
             <th
               class="text-right sort"
               width="120"
-              @click="sortPrice(),sortSalePrice = !sortSalePrice,sort = 'salePrice'"
+              @click="sortSalePrice = !sortSalePrice,sort = 'salePrice',sortPrice()"
             >
               售價 <i class="fas fa-sort"></i>
             </th>
