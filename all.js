@@ -5,9 +5,9 @@ let app = new Vue({
     productTemp: {},
     submit: "",
   },
-  created() {
-    this.products = JSON.parse(localStorage.getItem("products")) || [];
-  },
+  // created() {
+  //   this.products = JSON.parse(localStorage.getItem("products")) || [];
+  // },
   methods: {
     addProduct() {
       let vm = this.productTemp;
