@@ -6,7 +6,7 @@ let app = new Vue({
     submit: "",
   },
   created() {
-    this.products = JSON.parse(localStorage.getItem("products"));
+    this.products = JSON.parse(localStorage.getItem("products")) || [];
   },
   methods: {
     addProduct() {
