@@ -1,12 +1,36 @@
 let app = new Vue({
   el: "#app",
   data: {
-    products: [],
+    products: [{
+        id: 1593937170381,
+        imgUrl: "https://f.ecimg.tw/items/DYAJCH1900AN913/000001_1593773197.jpg",
+        title: "airpods pro",
+        category: "藍芽耳機",
+        unit: "個",
+        originalPrice: 7990,
+        salePrice: 7890,
+        description: "頻果公司目前最強大的降噪真無線藍芽耳機",
+        content: "頻果公司目前最強大的降噪真無線藍芽耳機",
+        isEnabled: false,
+      },
+      {
+        id: 1593937294393,
+        imgUrl: "https://b.ecimg.tw/items/DYAJCX1900AONMZ/000001_1593745506.jpg",
+        title: "iphone SE 64G",
+        category: "智慧型手機",
+        unit: "支",
+        originalPrice: 14500,
+        salePrice: 14000,
+        description: "iphone",
+        content: "iphone",
+        isEnabled: true,
+      },
+    ],
     productTemp: {},
     submit: "",
-  },
-  created() {
-    this.products = JSON.parse(localStorage.getItem("products")) || [];
+    sort: "",
+    sortOriPrice: false,
+    sortSalePrice: false,
   },
   methods: {
     addProduct() {
@@ -28,7 +52,6 @@ let app = new Vue({
         const id = Date.now();
         vm.id = id;
         this.products.push(vm);
-        localStorage.setItem("products", JSON.stringify(this.products));
         this.productTemp = {};
         // 關閉modal
         $("#productModal").modal("hide");
@@ -40,7 +63,6 @@ let app = new Vue({
           this.products.splice(i, 1);
         }
       });
-      localStorage.setItem("products", JSON.stringify(this.products));
       this.productTemp = {};
       $("#delProductModal").modal("hide");
     },
@@ -50,7 +72,6 @@ let app = new Vue({
           this.products[i] = this.productTemp;
         }
       });
-      localStorage.setItem("products", JSON.stringify(this.products));
       this.productTemp = {};
       $("#productModal").modal("hide");
     },
@@ -59,6 +80,26 @@ let app = new Vue({
     },
     cancel() {
       this.productTemp = {}
+    },
+    sortPrice() {
+      this.products.sort((a, b) => {
+        switch (this.sort) {
+          case 'oriPrice':
+            if (this.sortOriPrice) {
+              return a.originalPrice - b.originalPrice
+            } else {
+              return b.originalPrice - a.originalPrice
+            }
+            break;
+          case 'salePrice':
+            if (this.sortSalePrice) {
+              return a.salePrice - b.salePrice
+            } else {
+              return b.salePrice - a.salePrice
+            }
+            break;
+        }
+      })
     }
   },
 });
