@@ -56,5 +56,8 @@ let app = new Vue({
     getProductTemp(item) {
       this.productTemp = item;
     },
+    cancelEdit() {
+      this.productTemp = {}
+    }
   },
 });
