@@ -69,6 +69,7 @@ let app = new Vue({
     sortSalePrice: false,
   },
   methods: {
+    // 新增產品
     addProduct() {
       let vm = this.productTemp;
       if (
@@ -93,6 +94,7 @@ let app = new Vue({
         $("#productModal").modal("hide");
       }
     },
+    // 刪除產品
     delProduct() {
       this.products.forEach((item, i) => {
         if (this.productTemp.id === item.id) {
@@ -102,6 +104,7 @@ let app = new Vue({
       this.productTemp = {};
       $("#delProductModal").modal("hide");
     },
+    // 編輯產品內容
     editProduct() {
       this.products.forEach((item, i) => {
         if (this.productTemp.id === item.id) {
@@ -111,12 +114,17 @@ let app = new Vue({
       this.productTemp = {};
       $("#productModal").modal("hide");
     },
+    // 取得產品資料到productTemp
     getProductTemp(item) {
-      this.productTemp = item;
+      this.productTemp = {
+        ...item
+      };
     },
+    // 取消編輯和刪除
     cancel() {
       this.productTemp = {}
     },
+    // 對originPrice和salePrice 進行排序
     sortPrice() {
       this.products.sort((a, b) => {
         switch (this.sort) {
