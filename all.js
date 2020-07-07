@@ -83,15 +83,18 @@ let app = new Vue({
       ) {
         alert("資料輸入不完整，請再確認");
         return;
-      } else {
-        // 抓取id值
-        const id = Date.now();
-        vm.id = id;
-        this.products.push(vm);
-        this.productTemp = {};
-        // 關閉modal
-        $("#productModal").modal("hide");
       }
+      if (vm.originalPrice < 0 || vm.salePrice < 0) {
+        alert('商品價格不能小於0');
+        return;
+      }
+      // 抓取id值
+      const id = Date.now();
+      vm.id = id;
+      this.products.push(vm);
+      this.productTemp = {};
+      // 關閉modal
+      $("#productModal").modal("hide");
     },
     // 刪除產品
     delProduct() {
