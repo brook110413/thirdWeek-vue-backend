@@ -36,14 +36,14 @@
             <th
               class="text-right sort"
               width="120"
-              @click="sortOriPrice = !sortOriPrice,sort = 'oriPrice',sortPrice()"
+              @click="price = !price;sort = 'oriPrice';sortPrice()"
             >
               原價 <i class="fas fa-sort"></i>
             </th>
             <th
               class="text-right sort"
               width="120"
-              @click="sortSalePrice = !sortSalePrice,sort = 'salePrice',sortPrice()"
+              @click="price = !price;sort = 'salePrice';sortPrice()"
             >
               售價 <i class="fas fa-sort"></i>
             </th>
@@ -65,7 +65,7 @@
                 class="btn btn-outline-primary btn-sm"
                 data-toggle="modal"
                 data-target="#productModal"
-                @click="getProductTemp(item),submit = 'edit'"
+                @click="getProductTemp(item);submit = 'edit'"
               >
                 <i class="far fa-edit"></i>
               </button>

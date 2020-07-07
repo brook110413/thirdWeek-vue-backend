@@ -65,13 +65,12 @@ let app = new Vue({
     productTemp: {},
     submit: "",
     sort: "",
-    sortOriPrice: false,
-    sortSalePrice: false,
+    price: false,
   },
   methods: {
     // 新增產品
     addProduct() {
-      let vm = this.productTemp;
+      const vm = this.productTemp;
       if (
         !vm.imgUrl ||
         !vm.title ||
@@ -129,14 +128,14 @@ let app = new Vue({
       this.products.sort((a, b) => {
         switch (this.sort) {
           case 'oriPrice':
-            if (this.sortOriPrice) {
+            if (this.price) {
               return a.originalPrice - b.originalPrice
             } else {
               return b.originalPrice - a.originalPrice
             }
             break;
           case 'salePrice':
-            if (this.sortSalePrice) {
+            if (this.price) {
               return a.salePrice - b.salePrice
             } else {
               return b.salePrice - a.salePrice
